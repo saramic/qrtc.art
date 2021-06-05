@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="qr-container">
+    <% @locations.each do |location| %>
+      <a href="<%= location.url %>" class="qr">
+        <h1>QRTC.ART</h1>
+        <div class="qr-code">
+          <%= location.qr_svg %>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>

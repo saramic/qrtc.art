@@ -1,6 +1,15 @@
-parallel: true
-format: progress
-ruby_version: 3.0.1
+parallel: true          # default: false
+format: progress        # default: Standard::Formatter
+ruby_version: 2.7.3     # default: RUBY_VERSION
 
 ignore:                 # default: []
+  - 'config/**/*'
+  - 'bin/*'
+  - 'lib/templates/**/*'
   - 'node_modules/**/*'
+  - 'lib/tasks/**/*'
+  - 'lib/jumpstart/**/*'
+  - 'lib/uniform_notifier/**/*'
+  - 'lib/pundit/rspec.rb'
+  - 'lib/generators/**/*'
+  - 'spec/services/summaries/summarise_service_spec.rb'

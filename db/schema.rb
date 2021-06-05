@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_05_100558) do
+ActiveRecord::Schema.define(version: 2021_06_05_100938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
+  create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.decimal "latitude", precision: 10, scale: 6, default: "0.0"
+    t.decimal "longitude", precision: 10, scale: 6, default: "0.0"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "visits", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "location_id", null: false
+    t.jsonb "meta_data", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.index ["location_id"], name: "index_visits_on_location_id"
+  end
+
+  add_foreign_key "visits", "locations"
 end
