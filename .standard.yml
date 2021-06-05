@@ -1,0 +1,6 @@
+parallel: true
+format: progress
+ruby_version: 3.0.1
+
+ignore:                 # default: []
+  - 'node_modules/**/*'
