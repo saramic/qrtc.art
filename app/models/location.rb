@@ -25,7 +25,8 @@ class Location < ApplicationRecord
       shape_rendering: "crispEdges",
       module_size: 11,
       standalone: true,
-      use_path: true
+      use_path: true,
+      viewbox: "0 0 500 500"
     ).html_safe
   end
 end
