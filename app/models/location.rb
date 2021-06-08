@@ -21,7 +21,7 @@ class Location < ApplicationRecord
   def self.qr_svg_for(location_id)
     qrcode = RQRCode::QRCode.new(url_for(location_id))
     qrcode.as_svg(
-      color: "000",
+      color: "212121",
       shape_rendering: "crispEdges",
       module_size: 11,
       standalone: true,

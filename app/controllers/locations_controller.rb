@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     @url = @location.url
     @qr_svg = @location.qr_svg
-    render partial: "register" if @location.status == "pending"
+    render "register" if @location.status == "pending" || params[:edit] == "true"
     @location.visits.create(meta_data: {
       user_agent: request.user_agent,
       remote_ip: request.remote_ip
@@ -27,7 +27,7 @@ class LocationsController < ApplicationController
     params[:number].to_i.times do
       @locations << Location.create!
     end
-    render partial: "generated"
+    render "generated", layout: "print"
   end
 
   def update

@@ -1,0 +1,68 @@
+@import "milligram";
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+:root {
+  --primary: #fe058a;
+}
+body {
+  color: #212121;
+  &.site {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(60deg ,#630b8f,var(--primary));
+  }
+}
+a:focus, a:hover {
+  color: #212121;
+}
+.container {
+  height: 100%
+}
+.qr-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.qr {
+  padding: 20px;
+  display: block;
+  width: 330px !important;
+  color: inherit;
+  text-decoration: none;
+  h1 {
+    width: 100%;
+    font-size: 3.2em;
+    font-weight: 700;
+    line-height: 1.5em;
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin: 0;
+  }
+  .count {
+    width: 100%;
+    font-size: 4em;
+    text-align: right;
+    font-weight: bold;
+  }
+}
+.site .qr {
+  /* background: rgba(0,0,0,0.05); */
+  filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0, 0, 30, 0.3));
+  /* box-shadow: 0.4rem 0.4rem 0.45rem rgba(0, 0, 30, 0.3); */
+}
+.qr-container {
+    box-sizing: content-box;
+}
+
+/* Larger than mobile screen */
+@media (min-width: 40.0rem) {
+  .qr h1 {
+    font-size: 4em;
+  }
+  .qr {
+    width: 400px !important;
+  }
+}

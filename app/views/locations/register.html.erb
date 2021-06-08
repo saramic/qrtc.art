@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="column column-80 column-offset-10">
+      <%= form_with model: @location do |f| %>
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :address %>
+          <%= f.text_field :address %>
+        </div>
+        <div>
+          <%= f.label :latitude %>
+          <%= f.text_field :latitude %>
+        </div>
+        <div>
+          <%= f.label :longitude %>
+          <%= f.text_field :longitude %>
+        </div>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column column-50 column-offset-25">
+      <div class="qr-code">
+        <%= @qr_svg %>
+      </div>
+    </div>
+  </div>
+</div>

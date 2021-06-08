@@ -1,9 +1,12 @@
 <div class="container">
   <div class="qr-container">
-    <%= form_with model: @location do |f| %>
-      <label for="number">Number</label>
-      <input id="number" name="number" type="text" />
-      <%= f.submit "generate" %>
-    <% end %>
+    <div>
+    <div>
+      <%= form_with model: @location do |f| %>
+        <label for="number">Number</label>
+        <input id="number" name="number" type="text" />
+        <%= f.submit "generate", type: "submit", class: "button-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
