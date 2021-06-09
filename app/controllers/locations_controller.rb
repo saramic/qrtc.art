@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  layout "print", only: :print
+
   def index
     location_id = Location.active_sample
     @url = Location.url_for(location_id)
@@ -8,6 +10,10 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+  end
+
+  def print
+    @locations = Location.where(id: params[:ids])
   end
 
   def show
@@ -27,7 +33,7 @@ class LocationsController < ApplicationController
     params[:number].to_i.times do
       @locations << Location.create!
     end
-    render "generated", layout: "print"
+    redirect_to print_locations_path(ids: @locations.pluck(:id))
   end
 
   def update

@@ -19,6 +19,7 @@
           <%= f.text_field :longitude %>
         </div>
         <%= f.submit %>
+        <%= link_to "re print", print_locations_path(ids: @location.id), class: "button button-outline" %>
       <% end %>
     </div>
   </div>

@@ -1,5 +1,8 @@
 <div class="container">
-  <% @locations.each do |location| %>
+  <% @locations.each_with_index do |location, index| %>
+    <% if index % 2 == 0 %>
+      <div class="row" style="margin-bottom: 4em;">
+    <% end %>
       <div class="column">
         <div class="qr-container">
           <a href="<%= location.url %>" class="qr">
@@ -10,6 +13,8 @@
           </a>
         </div>
       </div>
-    </div>
+    <% if index % 2 != 0 %>
+      </div>
+    <% end %>
   <% end %>
 </div>
