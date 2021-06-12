@@ -38,7 +38,10 @@
     <div class="column column-80 column-offset-10">
       <pre>
         <code>
-          <%= JSON.pretty_generate(@visits.map(&:meta_data)) %>
+          <%= JSON
+                .pretty_generate(
+                  @visits.map{ |visit| visit.attributes.slice("created_at", "meta_data") }
+                ) %>
         </code>
       </pre>
     </div>
