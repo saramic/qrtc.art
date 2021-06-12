@@ -25,6 +25,7 @@
         </div>
         <%= f.submit %>
         <%= link_to "re print", print_locations_path(ids: @location.id), class: "button button-outline" %>
+        <button type="button" onclick="useCurrentGeoLocation();">Use Current Geo Location</button>
       <% end %>
     </div>
   </div>
@@ -55,3 +56,15 @@
     </div>
   </div>
 </div>
+<script>
+  function useCurrentGeoLocation() {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        document.getElementById("location_latitude").value = position.coords.latitude;
+        document.getElementById("location_longitude").value = position.coords.longitude;
+      });
+    } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+    }
+  }
+</script>
