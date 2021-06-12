@@ -56,6 +56,20 @@ a:focus, a:hover {
 .qr-container {
     box-sizing: content-box;
 }
+.hash-tags {
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  &-main {
+    font-size: 4em;
+    font-weight: 900;
+  }
+}
+.show-qrtc {
+  .qr {
+    display: none;
+  }
+}
 
 /* Larger than mobile screen */
 @media (min-width: 40.0rem) {
@@ -64,5 +78,11 @@ a:focus, a:hover {
   }
   .qr {
     width: 400px !important;
+  }
+  .show-qrtc {
+    .qr {
+      display: inline-block;
+      width: 300px !important;
+    }
   }
 }

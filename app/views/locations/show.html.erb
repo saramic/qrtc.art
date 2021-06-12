@@ -1,10 +1,15 @@
 <div class="container">
-  <div class="qr-container">
-    <div class="qr">
-      <h1>QRTC.ART</h1><div class="qr-code">
-        <%= @qr_svg %>
+  <div class="row show-qrtc">
+    <div class="column column-50 hash-tags">
+      <div class="hash-tags-main">#<%= @location.code %></div>
+
+      #QRTC #QRTC.art #ARTC
+      <div class="count">Count: <%= @count %></div>
+    </div>
+    <div class="column column-50 hash-tags">
+      <div class="qr">
+          <%= @qr_svg %>
       </div>
-      <div class="count"><%= @count %></div>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :locations, only: %i[index show new edit create update] do
     collection do
       get :print
+      get :list
     end
     member do
       get :qr

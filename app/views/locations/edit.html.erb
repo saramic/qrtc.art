@@ -2,6 +2,11 @@
   <div class="row">
     <div class="column column-80 column-offset-10">
       <%= form_with model: @location do |f| %>
+        <%= f.text_field :code, type: :hidden %>
+        <div>
+          <%= f.label :code %>
+          <%= f.text_field :code, disabled: true %>
+        </div>
         <div>
           <%= f.label :name %>
           <%= f.text_field :name %>
@@ -23,22 +28,22 @@
       <% end %>
     </div>
   </div>
-  <% if @count && @visits %>
-    <div class="row">
-      <div class="column column-80 column-offset-10">
-        <strong>Count:</strong> <%= @count %>
-      </div>
+  <% if @visits %>
+  <div class="row">
+    <div class="column column-80 column-offset-10">
+      <strong>Count:</strong> <%= @count %>
     </div>
-    <div class="row">
-      <div class="column column-80 column-offset-10">
-        <pre>
-          <code>
-            <%= JSON.pretty_generate(@visits.map(&:meta_data)) %>
-          </code>
-        </pre>
-      </div>
+  </div>
+  <div class="row">
+    <div class="column column-80 column-offset-10">
+      <pre>
+        <code>
+          <%= JSON.pretty_generate(@visits.map(&:meta_data)) %>
+        </code>
+      </pre>
     </div>
-  <% end%>
+  </div>
+  <% end %>
   <div class="row">
     <div class="column column-50 column-offset-25">
       <div class="qr-code">

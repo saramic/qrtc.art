@@ -2,6 +2,12 @@ class LocationsController < ApplicationController
   layout "print", only: :print
 
   def index
+    @location = Location.active_sample
+    @location = nil unless @location.class == Location
+    @qr_svg = @location.qr_svg if @location
+  end
+
+  def list
     @locations = Location.all
   end
 
@@ -16,12 +22,16 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @qr_svg = @location.qr_svg
-    render "edit" if @location.status == "pending" || params[:edit] == "true"
+    if @location.status == "pending"
+      @location.set_code
+      render "edit"
+    end
     @count = @location.visits.count
   end
 
   def edit
     @location = Location.find(params[:id])
+    @location.set_code
     @qr_svg = @location.qr_svg
     @count = @location.visits.count
     @visits = @location.visits
@@ -39,7 +49,10 @@ class LocationsController < ApplicationController
   def create
     @locations = []
     params[:number].to_i.times do
-      @locations << Location.create!
+      location = Location.new
+      location.set_code
+      location.save!
+      @locations << location
     end
     redirect_to print_locations_path(ids: @locations.pluck(:id))
   end
@@ -53,6 +66,6 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name, :address, :latitude, :longitude)
+    params.require(:location).permit(:name, :address, :latitude, :longitude, :code)
   end
 end
