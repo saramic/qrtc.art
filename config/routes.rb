@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :locations, only: %i[index show new create update] do
+  resources :locations, only: %i[index show new edit create update] do
     collection do
       get :print
     end

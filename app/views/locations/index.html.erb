@@ -1,0 +1,17 @@
+<div class="container">
+  <% @locations.each do |location| %>
+    <%= link_to edit_location_path(location)  do %> 
+      <div class="row">
+      <div class="column">
+        <%= location.name.inspect %>
+      </div>
+      <div class="column">
+        <%= location.address.inspect %>
+      </div>
+      <div class="column">
+        <%= location.status %>
+      </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -23,6 +23,22 @@
       <% end %>
     </div>
   </div>
+  <% if @count && @visits %>
+    <div class="row">
+      <div class="column column-80 column-offset-10">
+        <strong>Count:</strong> <%= @count %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column-80 column-offset-10">
+        <pre>
+          <code>
+            <%= JSON.pretty_generate(@visits.map(&:meta_data)) %>
+          </code>
+        </pre>
+      </div>
+    </div>
+  <% end%>
   <div class="row">
     <div class="column column-50 column-offset-25">
       <div class="qr-code">

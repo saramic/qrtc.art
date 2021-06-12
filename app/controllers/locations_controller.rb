@@ -2,10 +2,7 @@ class LocationsController < ApplicationController
   layout "print", only: :print
 
   def index
-    location_id = Location.active_sample
-    @url = Location.url_for(location_id)
-    @qr_svg = Location.qr_svg_for(location_id)
-    render "show"
+    @locations = Location.all
   end
 
   def new
@@ -19,8 +16,15 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @qr_svg = @location.qr_svg
-    render "register" if @location.status == "pending" || params[:edit] == "true"
+    render "edit" if @location.status == "pending" || params[:edit] == "true"
     @count = @location.visits.count
+  end
+
+  def edit
+    @location = Location.find(params[:id])
+    @qr_svg = @location.qr_svg
+    @count = @location.visits.count
+    @visits = @location.visits
   end
 
   def qr
