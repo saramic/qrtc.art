@@ -5,8 +5,12 @@ Rails.application.routes.draw do
     collection do
       get :print
     end
+    member do
+      get :qr
+    end
   end
 
+  get "/qr/:id" => "locations#qr"
   get "/:id" => "locations#show"
   root to: "locations#index"
 end

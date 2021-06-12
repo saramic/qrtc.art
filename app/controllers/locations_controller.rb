@@ -18,14 +18,18 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @url = @location.url
     @qr_svg = @location.qr_svg
     render "register" if @location.status == "pending" || params[:edit] == "true"
+    @count = @location.visits.count
+  end
+
+  def qr
+    @location = Location.find(params[:id])
     @location.visits.create(meta_data: {
       user_agent: request.user_agent,
       remote_ip: request.remote_ip
     })
-    @count = @location.visits.count
+    redirect_to "/#{@location.id}"
   end
 
   def create

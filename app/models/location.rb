@@ -14,7 +14,7 @@ class Location < ApplicationRecord
 
   def self.url_for(location_id)
     uri = URI.parse(Rails.application.config.qrtc_base_url)
-    uri.path = "/#{location_id}"
+    uri.path = "/qr/#{location_id}"
     uri.to_s
   end
 
