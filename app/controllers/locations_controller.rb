@@ -20,7 +20,11 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @location = Location.find(params[:id])
+    if params[:id].length == Location::LOCATION_CODE_LENGTH
+      @location = Location.find_by(code: params[:id])
+    else
+      @location = Location.find(params[:id])
+    end
     @qr_svg = @location.qr_svg
     if @location.status == "pending"
       @location.set_code
@@ -30,7 +34,11 @@ class LocationsController < ApplicationController
   end
 
   def edit
-    @location = Location.find(params[:id])
+    if params[:id].length == Location::LOCATION_CODE_LENGTH
+      @location = Location.find_by(code: params[:id])
+    else
+      @location = Location.find(params[:id])
+    end
     @location.set_code
     @qr_svg = @location.qr_svg
     @count = @location.visits.count
@@ -43,7 +51,7 @@ class LocationsController < ApplicationController
       user_agent: request.user_agent,
       remote_ip: request.remote_ip
     })
-    redirect_to "/#{@location.id}"
+    redirect_to "/#{@location.code}"
   end
 
   def create
@@ -60,7 +68,7 @@ class LocationsController < ApplicationController
   def update
     @location = Location.find(params[:id])
     @location.update!(location_params.merge(status: "active"))
-    redirect_to "/#{@location.id}"
+    redirect_to "/#{@location.code}"
   end
 
   private

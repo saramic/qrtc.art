@@ -1,11 +1,22 @@
 class Location < ApplicationRecord
+  LOCATION_CODE_LENGTH = 4
   has_many :visits, dependent: :destroy
   enum status: {pending: 0, active: 1, archived: 2}
 
   scope :active_sample, -> { where(status: "active").where.not(code: nil).sample }
   validates :code, presence: true
-  validates :code, length: { is: 4 }
+  validates :code, length: { is: LOCATION_CODE_LENGTH }
   validates :code, uniqueness: true
+
+  def hash_tag_text
+    [
+      [name, address].reject(&:empty?).join(", "),
+      "#qrtc",
+      "#QRTC.art",
+      "#qrtc.#{code}",
+      "##{code}"
+    ].join(" ")
+  end
 
   def url
     Location.url_for(id)
@@ -41,7 +52,7 @@ class Location < ApplicationRecord
 
   def generate_code
     loop do
-      new_code = SecureRandom.alphanumeric(4)
+      new_code = SecureRandom.alphanumeric(LOCATION_CODE_LENGTH)
       break new_code unless Location.where(code: new_code).exists?
     end
   end
