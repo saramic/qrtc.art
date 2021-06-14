@@ -14,7 +14,10 @@ class Location < ApplicationRecord
       "#qrtc",
       "#QRTC_art",
       "#qrtc_#{code}",
-      "##{code}"
+      "##{code}",
+      "#streetart",
+      "#streetartmelbourne",
+      "#streetartaustralia"
     ].join(" ")
   end
 
