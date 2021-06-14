@@ -2,10 +2,10 @@
   <div class="row show-qrtc">
     <% if @location %>
       <div class="column column-50 hash-tags">
+        <%= link_to "#QRTC.art", root_path %>
+        <br />
         <%= @location.name.inspect %>
-        <div class="hash-tags-main">#<%= @location.code %></div>
-
-        #QRTC #QRTC.art #ARTC
+        <%= link_to "##{@location.code}", "/#{@location.code}", class: "hash-tags-main" %>
         <div class="count">Count: <%= @count %></div>
       </div>
       <div class="column column-50 hash-tags">
@@ -16,26 +16,15 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="column column-50 column-offset-25">
-      take a look at publicly uploaded art works
-    </div>
-  </div>
-  <div class="row">
-    <div class="column column-50 column-offset-25">
-      <% if @location %>
-        <%= link_to(
-          "https://www.instagram.com/explore/tags/#{@location.code}/",
-          "https://www.instagram.com/explore/tags/#{@location.code}/"
-        ) %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="column column-50 column-offset-25">
-      <%= link_to(
-        "https://www.instagram.com/explore/tags/qrtc/",
-        "https://www.instagram.com/explore/tags/qrtc/"
-      ) %>
+    <div class="column">
+      <div id="pixlee_container"></div>
+      <script type="text/javascript">
+        window.PixleeAsyncInit = function() {
+          Pixlee.init({apiKey:'181UZTCE_Zxhu0-cT95P'});
+          Pixlee.addSimpleWidget({widgetId:'33314'});
+        };
+      </script>
+      <script src="//instafeed.assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
     </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row show-qrtc">
     <div class="column column-50 hash-tags">
+      <%= link_to "#QRTC.art", root_path %>
+      <br />
       <%= @location.name.inspect %>
       <div class="hash-tags-main">#<%= @location.code %></div>
       <input id="input" type="text" value="<%= @location.hash_tag_text %>"/>
@@ -13,6 +15,14 @@
       </div>
     </div>
   </div>
+  <div id="pixlee_container"></div>
+  <script type="text/javascript">
+    window.PixleeAsyncInit = function() {
+      Pixlee.init({apiKey:'181UZTCE_Zxhu0-cT95P'});
+      Pixlee.addSimpleWidget({widgetId:'33314'});
+    };
+  </script>
+  <script src="//instafeed.assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
 </div>
 
 <script>
