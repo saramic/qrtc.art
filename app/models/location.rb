@@ -12,8 +12,8 @@ class Location < ApplicationRecord
     [
       [name, address].reject(&:empty?).join(", "),
       "#qrtc",
-      "#QRTC.art",
-      "#qrtc.#{code}",
+      "#QRTC_art",
+      "#qrtc_#{code}",
       "##{code}"
     ].join(" ")
   end

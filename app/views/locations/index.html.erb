@@ -2,7 +2,7 @@
   <div class="row show-qrtc">
     <% if @location %>
       <div class="column column-50 hash-tags">
-        <%= link_to "#QRTC.art", root_path %>
+        <%= link_to "#QRTC_art", root_path %>
         <br />
         <%= @location.name.inspect %>
         <%= link_to "##{@location.code}", "/#{@location.code}", class: "hash-tags-main" %>
