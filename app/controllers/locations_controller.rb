@@ -1,6 +1,4 @@
 class LocationsController < ApplicationController
-  layout "print", only: :print
-
   def index
     @location = Location.active_sample
     @location = nil unless @location.class == Location

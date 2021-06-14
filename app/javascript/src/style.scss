@@ -7,12 +7,10 @@
 }
 body {
   color: #212121;
-  &.site {
-    font-family: "Open Sans", sans-serif;
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(60deg ,#630b8f,var(--primary));
-  }
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(60deg ,#630b8f,var(--primary));
 }
 a:focus, a:hover {
   color: #212121;
@@ -48,7 +46,7 @@ a:focus, a:hover {
     font-weight: bold;
   }
 }
-.site .qr {
+.qr {
   /* background: rgba(0,0,0,0.05); */
   filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0, 0, 30, 0.3));
   /* box-shadow: 0.4rem 0.4rem 0.45rem rgba(0, 0, 30, 0.3); */
@@ -84,5 +82,11 @@ a:focus, a:hover {
       display: inline-block;
       width: 300px !important;
     }
+  }
+}
+
+@media print {
+  .qr {
+    filter: none;
   }
 }
