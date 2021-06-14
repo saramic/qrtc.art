@@ -2,10 +2,10 @@
   <div class="row show-qrtc">
     <% if @location %>
       <div class="column column-50 hash-tags">
-        <%= link_to "#QRTC_art", root_path %>
+        <%= link_to "#QRTC_art", root_path, "data-turbolinks" => false %>
         <br />
         <%= @location.name.inspect %>
-        <%= link_to "##{@location.code}", "/#{@location.code}", class: "hash-tags-main" %>
+        <%= link_to "##{@location.code}", "/#{@location.code}", class: "hash-tags-main", "data-turbolinks" => false %>
         <div class="count">Count: <%= @count %></div>
       </div>
       <div class="column column-50 hash-tags">
