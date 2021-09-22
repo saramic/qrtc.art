@@ -11,9 +11,13 @@ _usage() {
   echo
   echo -e "Hi $(whoami)!"
   echo
+  echo -e "${GREEN}Tooling${NC}"
+  echo
+  echo -e "${YELLOW}make prettier${NC}  apply rubocop rules"
+  echo
   echo -e "${GREEN}Deploy${NC}"
   echo
-  echo -e "${YELLOW}make deploy${NC} deploy to heroku"
+  echo -e "${YELLOW}make deploy${NC}    deploy to heroku"
   echo
 }
 _usage

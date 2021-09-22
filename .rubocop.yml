@@ -36,6 +36,7 @@ Metrics/BlockLength:
   Exclude:
     - "spec/features/**/*"
     - "spec/services/**/*"
+    - "config/environments/**/*"
 
 RSpec/Capybara/FeatureMethods:
   Description: allow given/background/scenario in capybara features

@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   def index
     @location = Location.active_sample
-    @location = nil unless @location.class == Location
+    @location = nil unless @location.instance_of?(Location)
     @qr_svg = @location.qr_svg if @location
   end
 
@@ -18,10 +18,10 @@ class LocationsController < ApplicationController
   end
 
   def show
-    if params[:id].length == Location::LOCATION_CODE_LENGTH
-      @location = Location.find_by(code: params[:id])
+    @location = if params[:id].length == Location::LOCATION_CODE_LENGTH
+      Location.find_by(code: params[:id])
     else
-      @location = Location.find(params[:id])
+      Location.find(params[:id])
     end
     @qr_svg = @location.qr_svg
     if @location.status == "pending"
@@ -32,10 +32,10 @@ class LocationsController < ApplicationController
   end
 
   def edit
-    if params[:id].length == Location::LOCATION_CODE_LENGTH
-      @location = Location.find_by(code: params[:id])
+    @location = if params[:id].length == Location::LOCATION_CODE_LENGTH
+      Location.find_by(code: params[:id])
     else
-      @location = Location.find(params[:id])
+      Location.find(params[:id])
     end
     @location.set_code
     @qr_svg = @location.qr_svg
@@ -47,7 +47,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     @location.visits.create(meta_data: {
       user_agent: request.user_agent,
-      remote_ip: request.remote_ip
+      remote_ip: request.remote_ip,
     })
     redirect_to "/#{@location.code}"
   end

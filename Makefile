@@ -4,6 +4,9 @@ default: usage
 usage:
 	bin/makefile/usage
 
+prettier:
+	bundle exec rubocop -A
+
 d.PHONY: deploy
 deploy:
 	RAILS_MASTER_KEY=`cat config/master.key` \

@@ -5,7 +5,7 @@ class Location < ApplicationRecord
 
   scope :active_sample, -> { where(status: "active").where.not(code: nil).sample }
   validates :code, presence: true
-  validates :code, length: { is: LOCATION_CODE_LENGTH }
+  validates :code, length: {is: LOCATION_CODE_LENGTH}
   validates :code, uniqueness: true
 
   def hash_tag_text
@@ -17,7 +17,7 @@ class Location < ApplicationRecord
       "##{code}",
       "#streetart",
       "#streetartmelbourne",
-      "#streetartaustralia"
+      "#streetartaustralia",
     ].join(" ")
   end
 
@@ -43,8 +43,8 @@ class Location < ApplicationRecord
       module_size: 11,
       standalone: true,
       use_path: true,
-      viewbox: "0 0 500 500"
-    ).html_safe
+      viewbox: "0 0 500 500",
+    ).html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def set_code
@@ -56,7 +56,7 @@ class Location < ApplicationRecord
   def generate_code
     loop do
       new_code = SecureRandom.alphanumeric(LOCATION_CODE_LENGTH)
-      break new_code unless Location.where(code: new_code).exists?
+      break new_code unless Location.exists?(code: new_code)
     end
   end
 end
