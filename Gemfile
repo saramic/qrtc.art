@@ -33,6 +33,11 @@ gem "bootsnap", ">= 1.4.4", require: false
 # QR code generation
 gem "rqrcode", "~> 2.0"
 
+# feature flipping
+gem "flipper"
+gem "flipper-active_record"
+gem "flipper-ui"
+
 group :development, :test do
   gem "rspec-example_steps"
   gem "rspec-rails"
