@@ -1,0 +1,18 @@
+<h1>features</h1>
+
+<div class="container mt-3">
+  <% Feature::FEATURES.each do |feature| %>
+    <div class="row">
+      <div class="column">
+        <%= link_to(
+          "toggle #{feature.inspect}",
+          toggle_feature_path(name: feature),
+          class: "button"
+          ) %>
+      </div>
+      <div class="column">
+        <%= session[:features] && session[:features][feature]&.inspect %>
+      </div>
+    </div>
+  <% end %>
+</div>

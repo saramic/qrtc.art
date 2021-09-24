@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :feature, only: %i[show] do
+    member do
+      get :toggle
+    end
+  end
+
   get "/qr/:id" => "locations#qr"
   get "/:id" => "locations#show"
   root to: "locations#index"
