@@ -5,7 +5,15 @@
         <%= link_to "#QRTC_art", root_path, "data-turbolinks" => false %>
         <br />
         <%= @location.name.inspect %>
-        <%= link_to "##{@location.code}", "/#{@location.code}", class: "hash-tags-main", "data-turbolinks" => false %>
+        <%= link_to(
+          "##{@location.code}",
+          "/#{@location.code}",
+          class: "hash-tags-main",
+          data: {
+            testid: "qrtc-code-link",
+            turbolinks: false
+          }
+        ) %>
         <div class="count">Count: <%= @count %></div>
       </div>
       <div class="column column-50 hash-tags">

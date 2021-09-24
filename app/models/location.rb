@@ -10,7 +10,7 @@ class Location < ApplicationRecord
 
   def hash_tag_text
     [
-      [name, address].reject(&:empty?).join(", "),
+      [name, address].compact.reject(&:empty?).join(", "),
       "#qrtc",
       "#QRTC_art",
       "#qrtc_#{code}",

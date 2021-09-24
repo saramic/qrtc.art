@@ -29,6 +29,8 @@ class LocationsController < ApplicationController
       render "edit"
     end
     @count = @location.visits.count
+
+    render Feature.enabled?(session, "new-page") ? :new_show : :show
   end
 
   def edit
