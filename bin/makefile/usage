@@ -14,6 +14,7 @@ _usage() {
   echo -e "${GREEN}Tooling${NC}"
   echo
   echo -e "${YELLOW}make prettier${NC}  apply rubocop rules"
+  echo -e "${YELLOW}make build${NC}     build app"
   echo
   echo -e "${GREEN}Deploy${NC}"
   echo
