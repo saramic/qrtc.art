@@ -42,8 +42,9 @@ feature "Show page actions", js: true do
             .find_all("[data-testid=action]")
             .map(&:text),
         ).to contain_exactly(
-          "COFFEE",
+          "I ❤️ QRTC",
           "NEXT QRTC",
+          "PAY ARTIST",
         )
       end
     end

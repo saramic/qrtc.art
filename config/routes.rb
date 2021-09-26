@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     collection do
       get :print
       get :list
+      get :pay
+      get :signup
     end
     member do
       get :qr

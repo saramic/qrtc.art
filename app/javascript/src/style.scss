@@ -4,6 +4,21 @@
 
 :root {
   --primary: #fe058a;
+  --mg-color-dark: #000000;
+  --mg-color-light: #fcfcfc;
+  --mg-color-initial: #ffffff;
+  --mg-color-primary: #9b4dca;
+  --mg-color-secondary: #302f2f;
+  --mg-color-tertiary: #797979;
+  --mg-color-quaternary: #a7a7a7;
+  --mg-color-quinary: #dadada;
+  --mg-control-radius: 0.4rem;
+  --mg-input-radius: 0.1rem;
+  --mg-color-red: #dc3545;
+  --mg-color-orange: #fd7e14;
+  --mg-color-blue: #007bff;
+  --mg-color-green: #28a745;
+  --mg-control-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.15);
 }
 body {
   color: #212121;
@@ -12,12 +27,69 @@ body {
   height: 100vh;
   background: linear-gradient(60deg ,#630b8f,var(--primary));
 }
+.invisible-absolute-left {
+  position: absolute;
+  left: -9999px;
+  width: 10px;
+  padding: 0;
+  margin: 0;
+}
+.block {
+  width: 100%;
+}
+.button.button-outline {
+  color: #ffffff;
+}
+.mg {
+  &-modal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 1000;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.3s;
+    & > .mg-modal--content {
+      background-color: var(--mg-color-initial);
+      border-radius: var(--mg-control-radius);
+      color: var(--mg-color-secondary);
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      z-index: 2000;
+      box-shadow: var(--mg-control-shadow);
+    }
+    &--closebtn {
+      color: var(--mg-color-secondary);
+      float: right;
+      font-size: 2.5em;
+      line-height: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  }
+  &-icon-close::after {
+    content: "\D7";
+  }
+  &-show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 a:focus, a:hover {
   color: #212121;
 }
-.container {
-  height: 100%
-}
+// .container {
+//   height: 100%
+// }
 .qr-container {
   height: 100%;
   display: flex;

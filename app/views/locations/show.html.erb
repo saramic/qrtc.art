@@ -5,7 +5,7 @@
       <br />
       <%= @location.name.inspect %>
       <div class="hash-tags-main">#<%= @location.code %></div>
-      <input id="input" type="text" value="<%= @location.hash_tag_text %>"/>
+      <input id="input" class="invisible-absolute-left" type="text" value="<%= @location.hash_tag_text %>"/>
       <button class="button button-outline" id="copy">Copy #hash tag</button>
       <div class="count">Count: <%= @count %></div>
     </div>
@@ -34,13 +34,3 @@
 
   document.querySelector("#copy").addEventListener("click", copy);
 </script>
-
-<style>
-#input {
-  position: absolute;
-  left: -9999px;
-  width: 10px;
-  padding: 0;
-  margin: 0;
-}
-</style>
