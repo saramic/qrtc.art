@@ -3,46 +3,7 @@
     <div class="column"></div>
     <div class="column">
       <h1>QRTC.art</h1>
-      <p>QR codes for local street art</p>
-    </div>
-    <div class="column"></div>
-  </div>
-  <div class="row">
-    <div class="column"></div>
-    <div class="column">
-      <%= link_to(
-        "Next QRTC",
-        location_path(Location.active_sample&.code),
-        class: "button block",
-        data: {
-          testid: "action"
-        }
-      ) %>
-      <%= link_to(
-        "Pay Artist",
-        pay_locations_path,
-        class: "button block",
-        data: {
-          testid: "action"
-        }
-      ) %>
-      <%= link_to(
-        "I ❤️ QRTC",
-        signup_locations_path,
-        class: "button block",
-        data: {
-          testid: "action"
-        }
-      ) %>
-    </div>
-    <div class="column"></div>
-  </div>
-  <div class="row">
-    <div class="column"></div>
-    <div class="column">
-      <input id="input" class="invisible-absolute-left" type="text" value="<%= @location.hash_tag_text %>"/>
-      <button class="button button-outline block" id="copy">Copy #hash tag</button>
-      <div class="count">Count: <%= @count %></div>
+      <p class="tagline">Local Street Art Connect, Dicover and Appreciate</p>
     </div>
     <div class="column"></div>
   </div>
@@ -50,31 +11,52 @@
     <div class="column"></div>
     <div class="column">
       <button
-        class="button button-outline block"
+        class="button block"
+        data-toggle="modal"
+        data-target="modal-find-next"
+      >Discover</button>
+      <button
+        class="button block"
         data-toggle="modal"
         data-target="modal-pay-artist"
-      >Pay Artist</button>
+      >Appreciate</button>
       <button
-        class="button button-outline block"
+        class="button block"
         data-toggle="modal"
-        data-target="modal-i-heart-qrtc"
-      >I ❤ QRTC</button>
+        data-target="modal-connect"
+      >Connect</button>
     </div>
     <div class="column"></div>
   </div>
 </div>
 
-<div class="container" id="modal-example">
+<div class="container">
+  <div class="mg-modal" id="modal-find-next">
+    <div class="mg-modal--content container">
+      <span class="mg-modal--closebtn mg-icon-close"></span>
+      <h3>Discover</h3>
+                      <div class="row">
+      <div class="column"></div>
+      <div class="column">
+        <h1>QRTC.art</h1>
+        <p class="tagline">Local Street Art Connect, Dicover and Appreciate</p>
+      </div>
+      <div class="column"></div>
+    </div>
+    <!-- comment -->
+    </div>
+  </div>
   <div class="mg-modal" id="modal-pay-artist">
     <div class="mg-modal--content container">
       <span class="mg-modal--closebtn mg-icon-close"></span>
-      <h3>Pay Artist</h3>
+      <h3>Appreciate</h3>
+    <!-- comment -->
     </div>
   </div>
-  <div class="mg-modal" id="modal-i-heart-qrtc">
+  <div class="mg-modal" id="modal-connect">
     <div class="mg-modal--content container">
       <span class="mg-modal--closebtn mg-icon-close"></span>
-      <h3>Sign Up to QRTC</h3>
+      <h3>Sign Up! to QRTC</h3>
       </div>
     </div>
   </div>
